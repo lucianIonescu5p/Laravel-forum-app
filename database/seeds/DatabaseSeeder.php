@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\Reply;
 use App\Thread;
 use App\Post;
 use App\User;
@@ -28,5 +29,12 @@ class DatabaseSeeder extends Seeder
                 ]));
             });
         });
+
+        for ($i = 0; $i < 10; $i++) {
+            factory(Reply::class, 3)->create([
+                'post_id' => Post::all()->random()->id,
+                'user_id' => User::all()->random()->id
+            ]);
+        }
     }
 }

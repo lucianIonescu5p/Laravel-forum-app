@@ -3,19 +3,19 @@
 @section('content')
     <div class="container" style="margin-top:50px">
         <div>
-            <h1> {{ __('Categories') }} </h1>
+            <h1> {{ __('Threads for') . ' ' . strtoupper($category) }} </h1>
         </div>
 
         <div class="row">
-            @forelse($categories as $category)
+            @forelse($threads as $thread)
                 <div class="col-md-4 card">
-                    <a href="{{ '/' . $category->title }}">
+                    <a href="{{ '/' . $thread->categories->title . '/' . $thread->title }}">
                         <div>
-                            <b>{{ $category->title }}</b>
+                            <b>{{ $thread->title }}</b>
                         </div>
 
                         <small>
-                            {{ 'Threads: ' . count($category->threads) }}
+                            {{ 'Comments: ' . count($thread->posts) }}
                         </small>
                     </a>
                 </div>
