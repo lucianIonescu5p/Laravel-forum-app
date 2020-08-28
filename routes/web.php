@@ -14,6 +14,7 @@
 Route::get('/login', 'HomeController@index')->name('home');
 Route::get('/', 'CategoryController@index');
 Route::post('/comment', 'PostController@store');
+Route::post('/thread', 'ThreadController@store');
 Route::post('/category', 'CategoryController@store')->middleware('admin.auth');
 Route::get('/{category}', 'CategoryController@show');
 Route::get('/{category}/{thread}', 'ThreadController@show');

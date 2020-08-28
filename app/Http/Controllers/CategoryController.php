@@ -18,7 +18,7 @@ class CategoryController extends Controller
             session(['isAdmin' => $user->role]);
         }
 
-        $categories = Category::with('threads')->simplePaginate(5);
+        $categories = Category::with('threads')->paginate(4);
 
         return view('welcome', compact('categories', 'user'));
     }
@@ -29,7 +29,7 @@ class CategoryController extends Controller
             ->whereHas('categories', function ($q) use ($request) {
                 return $q->where('title', $request->category);
             })
-            ->simplePaginate(5);
+            ->paginate(4);
 
         $category = $request->category;
 

@@ -27,10 +27,12 @@
             @endforelse
         </div>
 
+        {{ $threads->links() }}
+
         @if (session()->has('isAdmin'))
             <form method="POST" action="/thread">
                 @csrf
-
+                <input type="hidden" name="category_id" value="{{ $threads[0]->categories->id }}">
                 <div class="form-group">
                     <input class="form-control" type="text" name="thread" placeholder="Add thread">
                 </div>

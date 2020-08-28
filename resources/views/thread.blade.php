@@ -25,6 +25,14 @@
                             <a href="" style="text-align: end">{{ __('Reply') }}</a>
                         </div>
                     </div>
+
+                    @if (count($post->replies))
+                        @foreach ($post->replies as $reply)
+                            <div style="border:1px solid lightgray;padding:5px; margin-bottom:5px; margin-left:10%;width:80%;">
+                                {{$reply->content}}
+                            </div>
+                        @endforeach
+                    @endif
                 @empty
                     <div> {{ __('No Posts yet...') }} </div>
                 @endforelse
